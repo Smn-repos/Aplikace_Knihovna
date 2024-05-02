@@ -1,9 +1,10 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Book {
+    private String type;
     private String title;
     private String author;
-    private int year;
+    private int year; //Rok vydani
     private String availabilityStatus; // Vypujceno, K dispozici
     private String genre;   // Pouze pro romany
     private int forGrade;   // Pouze pro ucebnice
@@ -11,7 +12,8 @@ public class Book {
 
 
 //Konstruktor
-    public Book(String title, String author, int year, String availabilityStatus, String genre, int forGrade ) {
+    public Book(String type, String title, String author, int year, String availabilityStatus, String genre, int forGrade ) {
+        this.type = type;
         this.title = title;
         this.author = author;
         this.year = year;
