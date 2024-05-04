@@ -5,6 +5,17 @@ public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Library library = new Library();
+
+        //Preddefinovane knihy
+        Book greatGatsby = new Book("Roman", "The Great Gatsby", "F. Scott Fitzgerald", 1925, "Available", "Novel", 9);
+        library.addBook(greatGatsby);
+        Book harryPotter = new Book("Roman", "Harry Potter", "J.K. Rowling", 1997, "Available", "Fantasy", 6);
+        library.addBook(harryPotter);
+        Book javaProgramming = new Book("Ucebnice", "Java Programming", "John Doe", 2020, "Available", null, 0);
+        library.addBook(javaProgramming);
+        Book calculus = new Book("Ucebnice", "Calculus", "John Doe", 2020, "Available", null, 0);
+        library.addBook(calculus);
+
         boolean run = true;
         while (run){
             System.out.println("Vyberte z menu knihovny: ");
@@ -68,6 +79,10 @@ public class Test {
                     System.out.println("Kniha byla uspesne smazana!");
                     break;
 
+                case 5:
+                    System.out.println("Vypis knihovny: ");
+                    System.out.println(library.listBooks());
+                    break;
             }
 
         }
