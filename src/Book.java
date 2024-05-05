@@ -27,16 +27,13 @@ public class Book {
     }
 
 //Predpripravene Gettery a Settery
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public String getType() { return type; }
+    public void setType(String type) { this.type = type; }
 
-    public String getAuthor() {
-        return author;
-    }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+
+    public String getAuthor() { return author; }
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -55,16 +52,12 @@ public class Book {
         this.availabilityStatus = availabilityStatus;
     }
 
-    public String getGenre() {
-        return genre;
-    }
+    public String getGenre() { return genre; }
     public void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public int getForGrade() {
-        return forGrade;
-    }
+    public int getForGrade() { return forGrade; }
     public void setForGrade(int forGrade) {
         this.forGrade = forGrade;
     }

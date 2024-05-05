@@ -9,8 +9,8 @@ public class Test {
         //Preddefinovane knihy
         Book greatGatsby = new Book("Roman", "The Great Gatsby", "F. Scott Fitzgerald", 1925, "Available", "Novel", 9);
         library.addBook(greatGatsby);
-        Book harryPotter = new Book("Roman", "Harry Potter", "J.K. Rowling", 1997, "Available", "Fantasy", 6);
-        library.addBook(harryPotter);
+//        Book harryPotter = new Book("Roman", "Harry Potter", "J.K. Rowling", 1997, "Available", "Fantasy", 6);
+//        library.addBook(harryPotter);
         Book javaProgramming = new Book("Ucebnice", "Java Programming", "John Doe", 2020, "Available", null, 0);
         library.addBook(javaProgramming);
         Book calculus = new Book("Ucebnice", "Calculus", "John Doe", 2020, "Available", null, 0);
@@ -23,7 +23,7 @@ public class Test {
             System.out.println("2 .. Uprava knihy");
             System.out.println("3 .. Smazani knihy");
             System.out.println("4 .. Oznaceni knihy: Vypujcena/Vracena");
-            System.out.println("5 .. Vypis knih dle...");
+            System.out.println("5 .. Vypis knihy dle...");
             System.out.println("6 .. Vyhledej knihu");
             System.out.println("7 .. Uloz knihy do souboru");
             System.out.println("8 .. Nacteni knihy ze souboru");
@@ -118,6 +118,16 @@ public class Test {
                     else {
                         System.out.println("Kniha Nenalezena.");
                     }
+                case 8:
+                    System.out.println("Zadej nazev souboru: ");
+                    String fileName = sc.nextLine();
+                    library.loadBook(fileName);
+                    System.out.println("Kniha byla uspesne nactena ze souboru!");
+                    break;
+
+                case 9:
+                    System.out.println("KONEC");
+                    System.exit(0);
             }
 
         }
