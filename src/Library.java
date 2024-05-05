@@ -1,3 +1,6 @@
+//import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,4 +66,33 @@ public class Library
         return sb.toString();
     }
 
-}
+    public void saveBooks(Book book)
+    {
+        try{
+            String fileName = book.getTitle().replaceAll("\\s+", "_") + ".txt";
+            PrintWriter writer = new PrintWriter(fileName, "UTF-8");
+            writer.println("Title: " + book.getTitle());
+            writer.println("Author: " + book.getAuthor());
+            writer.println("Year: " + book.getYear());
+            writer.println("Availability Status: " + book.getAvailabilityStatus());
+            //if ("Roman".equals(book.getType())) {
+            //            writer.println("Genre: " + book.getGenre());
+            //        } else if ("Ucebnice".equals(book.getType())) {
+            //            writer.println("Suitable for grade: " + book.getForGrade());
+            //        }
+            if (book.getGenre() != null){
+                writer.write(book.getGenre() + "\n");
+            }
+            else {
+                writer.write(book.getForGrade() + "\n");
+            }
+            writer.close();
+        }
+        catch (IOException e){
+            System.out.println("Chyba pri zapisovani do souboru.");
+            e.printStackTrace();
+        }
+    }
+    }
+
+
