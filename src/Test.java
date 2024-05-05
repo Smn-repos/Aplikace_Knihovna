@@ -80,9 +80,13 @@ public class Test {
                     break;
 
                 case 5:
-                    System.out.println("Vypis knihovny: ");
-                    System.out.println(library.listBooks());
-                    //Zde dopln dalsi funkce souvisejici s Vypisem
+                    System.out.println("List library: ");
+                	    System.out.println("1. Sort by title");
+                	    System.out.println("2. Sort by author");
+                	    System.out.print("Enter your choice: ");
+                	    int choice = sc.nextInt();
+                	    SortOption sortOption = choice == 1 ? SortOption.TITLE : SortOption.AUTHOR;
+                	    System.out.println(library.listBooks(sortOption));
                     break;
 
                 case 6:
