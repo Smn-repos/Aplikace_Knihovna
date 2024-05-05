@@ -68,7 +68,7 @@ public class Test {
                         System.out.println("Kniha byla nove upravena.");
                     }
                     else {
-                        System.out.println("Kniha nenalezena.");
+                        System.out.println("Kniha Nenalezena.");
                     }
                     break;
 
@@ -82,7 +82,42 @@ public class Test {
                 case 5:
                     System.out.println("Vypis knihovny: ");
                     System.out.println(library.listBooks());
+                    //Zde dopln dalsi funkce souvisejici s Vypisem
                     break;
+
+                case 6:
+                    System.out.println("Zadej nazev knihy, kterou chces vyhledat: ");
+                    String titleToSearch = sc.nextLine();
+                    Book bookToSearch = library.findBook(titleToSearch);
+                    if (bookToSearch != null){
+                        System.out.println("Kniha nalezena");
+                        System.out.println("Nazev: " + bookToSearch.getTitle());
+                        System.out.println("Autor: " + bookToSearch.getAuthor());
+                        System.out.println("Rok: " + bookToSearch.getYear());
+                        System.out.println("Stav: " + bookToSearch.getAvailabilityStatus());
+                        if (bookToSearch.getGenre() != null){
+                            System.out.println("Zanr: " + bookToSearch.getGenre());
+                        }
+                        else {
+                            System.out.println("Pro rocnik: " + bookToSearch.getForGrade());
+                        }
+                    }
+                    else {
+                        System.out.println("Kniha Nenalezena.");
+                    }
+                    break;
+
+                case 7:
+                    System.out.println("Zadej nazev knihy: ");
+                    String titleToSave = sc.nextLine();
+                    Book bookToSave = library.findBook(titleToSave);
+                    if (bookToSave != null){
+                        library.saveBooks(bookToSave);
+                        System.out.println("Kniha byla uspesne ulozena do souboru!");
+                    }
+                    else {
+                        System.out.println("Kniha Nenalezena.");
+                    }
             }
 
         }

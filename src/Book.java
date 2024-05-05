@@ -26,6 +26,7 @@ public class Book {
         }
     }
 
+//Predpripravene Gettery a Settery
     public String getTitle() {
         return title;
     }
