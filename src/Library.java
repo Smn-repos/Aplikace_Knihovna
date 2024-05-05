@@ -8,7 +8,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.sql.ResultSet;
 
 
 public class Library {
@@ -36,6 +39,10 @@ public class Library {
             }
         }
         return null;
+    }
+
+    public void sortBooksAlphabetically() {
+        Collections.sort(this.books, Comparator.comparing(Book::getTitle));
     }
 
     //Vypis knih
@@ -136,7 +143,7 @@ public class Library {
                 pstmt.executeUpdate();
             }
         } catch (SQLException e) {
-            System.out.println("Error pri nacteni knih do databaze.
+            System.out.println("Error pri nacteni knih do databaze.");
             e.printStackTrace();
         }
     }
@@ -168,5 +175,6 @@ public class Library {
             System.out.println("Error pri nacteni knih z databaze.");
             e.printStackTrace();
         }
+    }
 }
 

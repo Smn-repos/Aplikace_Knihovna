@@ -83,7 +83,7 @@ public class Test {
                     System.out.println("Vypis knihovny: ");
                     System.out.println(library.listBooks());
                     //Zde dopln dalsi funkce souvisejici s Vypisem
-                    break;
+
 
                 case 6:
                     System.out.println("Zadej nazev knihy, kterou chces vyhledat: ");
