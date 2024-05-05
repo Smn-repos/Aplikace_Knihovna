@@ -27,34 +27,14 @@ public class Test {
             System.out.println("6 .. Vyhledej knihu");
             System.out.println("7 .. Uloz knihy do souboru");
             System.out.println("8 .. Nacteni knihy ze souboru");
-            System.out.println("=>");
-            int volba = sc.nextInt(); 
+
+            int volba = sc.nextInt();
             sc.nextLine(); // zkonzumujeme zbytek radku
-           
+
             switch (volba){
                 case 1:
-                	 int volbaKnihy = sc.nextInt(); 
-                     sc.nextLine();
-                	String type = "";
-                	String genre = "";
-                	int forGrade = 0;
- 
-                	switch (volbaKnihy) {
-                	    case 1:
-                	        type = "Roman";
-                	        System.out.println("Zadej zanr knihy pro kategorii Roman");
-                	        genre = sc.nextLine();
-                	        break;
-                	    case 2:
-                	        type = "Ucebnice";
-                	        System.out.println("Zadej pro ktery rocnik je ucebnice vhodna");
-                	        forGrade = sc.nextInt();
-                	        sc.nextLine();
-                	        break;
-                	    default:
-                	        System.out.println("Neplatná volba.");
-                	        return; 
-                	}                    
+                    System.out.println("Jedna se o Roman/Ucebnici?");
+                    String type = sc.nextLine();
                     System.out.println("Zadej nazev knihy: ");
                     String title = sc.nextLine();
                     System.out.println("Zadej autora knihy: ");
@@ -62,14 +42,17 @@ public class Test {
                     System.out.println("Zadej rok vydani knihy: ");
                     int year = sc.nextInt();
                     //sc.nextLine();
-                    System.out.println("Zadej availabilityStatus: ");
                     String availabilityStatus = sc.nextLine();
+                    System.out.println("Zadej zanr knihy pro kategorii Roman");
+                    String genre = sc.nextLine();
+                    System.out.println("Zadej pro ktery rocnik je uccebnice vhodna");
+                    int forGrade = sc.nextInt();
                     sc.nextLine(); // zkonzumujeme zbytek radku
 
                     Book newBook = new Book(type ,title ,author, year, availabilityStatus,genre, forGrade);
                     library.addBook(newBook);
                     System.out.println("Gratuluji, kniha uspesne pridana!");
-                    break;
+
                 case 2:
                     System.out.println("Zadej nazev knihy, kterou chces upravit: ");
                     String titleToEdit = sc.nextLine();
