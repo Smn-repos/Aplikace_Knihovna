@@ -31,6 +31,28 @@ public class Library {
         books.removeIf(book -> book.getTitle().equals(title));
     }
 
+    //Zmena stavu knihy
+    public void setBookStatus(String title, String newStatus) {
+        for (Book book : this.books) {
+            if (book.getTitle().equals(title)) {
+                book.setAvailabilityStatus(newStatus);
+                System.out.println("Kniha byla aktualizovana.");
+                return;
+            }
+        }
+        System.out.println("Kniha Nenalezena.");
+    }
+
+    //Vypujcene knihy
+    public void printBorrowedBooks() {
+        for (Book book : this.books) {
+            if ("Vypujcena".equals(book.getAvailabilityStatus())) {
+                System.out.println(book);
+                System.out.println("Genre: " + book.getGenre());
+            }
+        }
+    }
+
     //Uprava knihy
     public Book findBook(String title) {
         for (Book book : this.books) {
@@ -70,6 +92,16 @@ public class Library {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public List<Book> getBooksByGenre(String genre) {
+        List<Book> filteredBooks = new ArrayList<>();
+        for (Book book : books) {
+            if (genre.equals(book.getType())) {
+                filteredBooks.add(book);
+            }
+        }
+        return filteredBooks;
     }
 
     public void saveBooks(Book book) {

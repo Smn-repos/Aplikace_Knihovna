@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.List;
 
 public class Test {
 
@@ -7,13 +8,13 @@ public class Test {
         Library library = new Library();
 
         //Preddefinovane knihy
-        Book greatGatsby = new Book("Roman", "The Great Gatsby", "F. Scott Fitzgerald", 1925, "Available", "Novel", 9);
+        Book greatGatsby = new Book("Roman", "The Great Gatsby", "F. Scott Fitzgerald", 1925, "Dostupna", "Novel", 9);
         library.addBook(greatGatsby);
-//        Book harryPotter = new Book("Roman", "Harry Potter", "J.K. Rowling", 1997, "Available", "Fantasy", 6);
+//       Book harryPotter = new Book("Roman", "Harry Potter", "J.K. Rowling", 1997, "Dostupna", "Fantasy", 6);
 //        library.addBook(harryPotter);
-        Book javaProgramming = new Book("Ucebnice", "Java Programming", "John Doe", 2020, "Available", null, 0);
+        Book javaProgramming = new Book("Ucebnice", "Java Programming", "John Doe", 2020, "Dostupna", null, 0);
         library.addBook(javaProgramming);
-        Book calculus = new Book("Ucebnice", "Calculus", "John Doe", 2020, "Available", null, 0);
+        Book calculus = new Book("Ucebnice", "Calculus", "John Doe", 2020, "Dostupna", null, 0);
         library.addBook(calculus);
 
         boolean run = true;
@@ -27,6 +28,7 @@ public class Test {
             System.out.println("6 .. Vyhledej knihu");
             System.out.println("7 .. Uloz knihy do souboru");
             System.out.println("8 .. Nacteni knihy ze souboru");
+            System.out.println("9 .. KONEC");
 
             int volba = sc.nextInt();
             sc.nextLine(); // zkonzumujeme zbytek radku
@@ -79,10 +81,45 @@ public class Test {
                     System.out.println("Kniha byla uspesne smazana!");
                     break;
 
+                case 4:
+                    System.out.println("Zadej nazev knihy: ");
+                    title = sc.nextLine();
+                    System.out.println("Choose the new status (Vypujcena/Dostupna): ");
+                    String newStatus = sc.nextLine();
+                    library.setBookStatus(title, newStatus);
+                    break;
+
                 case 5:
-                    System.out.println("Vypis knihovny: ");
-                    System.out.println(library.listBooks());
+                    System.out.println("\nVypis knihovny: ");
+                    System.out.println("1 ... Vypis vsech knih");
+                    System.out.println("2 ... Vypis knih dle zanru");
+                    System.out.println("3 ... Vypis vypujcenych knih");
+                    int podVolba = sc.nextInt();
+                    sc.nextLine();
                     //Zde dopln dalsi funkce souvisejici s Vypisem
+                    switch (podVolba) {
+                        case 1:
+                            System.out.println("Vypis vsech knih: ");
+                            System.out.println(library.listBooks());
+                            break;
+
+                            case 2:
+                            System.out.println("Vyber zanr roman/ucebnice: ");
+                            genre = sc.nextLine();
+                            List<Book> booksByGenre = library.getBooksByGenre(genre);
+                            for (Book book : booksByGenre){
+                                System.out.println(book);
+                            }
+                            break;
+                        case 3:
+                            System.out.println("Vypis vypujcenych knih: ");
+                            library.printBorrowedBooks();
+                            break;
+
+                        default:
+                            System.out.println("Neplatna volba.");
+                            break;
+                    }
 
 
                 case 6:
@@ -126,7 +163,7 @@ public class Test {
                     break;
 
                 case 9:
-                    System.out.println("KONEC");
+                    System.out.println(" Nashledanou :)) ");
                     System.exit(0);
             }
 
