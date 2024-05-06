@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 
@@ -33,27 +34,38 @@ public class Test {
             int volba = sc.nextInt();
             sc.nextLine(); // zkonzumujeme zbytek radku
 
+            String title = "";
+            String genre = "";
+
             switch (volba){
                 case 1:
-                    System.out.println("Jedna se o Roman/Ucebnici?");
-                    String type = sc.nextLine();
-                    System.out.println("Zadej nazev knihy: ");
-                    String title = sc.nextLine();
-                    System.out.println("Zadej autora knihy: ");
-                    String author = sc.nextLine();
-                    System.out.println("Zadej rok vydani knihy: ");
-                    int year = sc.nextInt();
-                    //sc.nextLine();
-                    String availabilityStatus = sc.nextLine();
-                    System.out.println("Zadej zanr knihy pro kategorii Roman");
-                    String genre = sc.nextLine();
-                    System.out.println("Zadej pro ktery rocnik je uccebnice vhodna");
-                    int forGrade = sc.nextInt();
-                    sc.nextLine(); // zkonzumujeme zbytek radku
+                    try {
+                        System.out.println("Jedna se o Roman/Ucebnici?");
+                        String type = sc.nextLine();
+                        System.out.println("Zadej nazev knihy: ");
+                        title = sc.nextLine();
+                        System.out.println("Zadej autora knihy: ");
+                        String author = sc.nextLine();
+                        System.out.println("Zadej rok vydani knihy: ");
+                        int year = sc.nextInt();
+                        //sc.nextLine();
+                        String availabilityStatus = sc.nextLine();
+                        System.out.println("Zadej zanr knihy pro kategorii Roman");
+                        genre = sc.nextLine();
+                        System.out.println("Zadej pro ktery rocnik je uccebnice vhodna");
+                        int forGrade = sc.nextInt();
+                        sc.nextLine(); // zkonzumujeme zbytek radku
 
-                    Book newBook = new Book(type ,title ,author, year, availabilityStatus,genre, forGrade);
-                    library.addBook(newBook);
-                    System.out.println("Gratuluji, kniha uspesne pridana!");
+                        Book newBook = new Book(type, title, author, year, availabilityStatus, genre, forGrade);
+                        library.addBook(newBook);
+                        System.out.println("Gratuluji, kniha uspesne pridana!");
+                    }
+                    catch (InputMismatchException e) {
+                        System.out.println("Spatny input. Zadej spravny typ");
+                        sc.nextLine();
+                    }
+                    break;
+
 
                 case 2:
                     System.out.println("Zadej nazev knihy, kterou chces upravit: ");
@@ -156,15 +168,21 @@ public class Test {
                         System.out.println("Kniha Nenalezena.");
                     }
                 case 8:
-                    System.out.println("Zadej nazev souboru: ");
-                    String fileName = sc.nextLine();
-                    library.loadBook(fileName);
-                    System.out.println("Kniha byla uspesne nactena ze souboru!");
+                    try{
+                        System.out.println("Zadej nazev souboru: ");
+                        String fileName = sc.nextLine();
+                        library.loadBook(fileName);
+                        System.out.println("Kniha byla uspesne nactena ze souboru!");
+                    }
+                    catch (NumberFormatException e){
+                        System.out.println("Spatny format. Zkontroluj soubor a zkus znovu");
+                    }
                     break;
 
                 case 9:
                     System.out.println(" Nashledanou :)) ");
-                    System.exit(0);
+                    run = false;
+                    break;
             }
 
         }
